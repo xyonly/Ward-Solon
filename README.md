@@ -1,4 +1,4 @@
-# Ward 轻量级性能监控
+# Ward 轻量级性能监控（中文汉化版）
 本项目基于 [Ward](https://github.com/AntonyLeons/Ward) 进行重构，原项目采用 Spring Boot 3 作为后端框架，而本项目则使用 [Solon](https://solon.noear.org/) 进行重构，使其更加轻量、高效!!!
 
 # 关于 Ward
