@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org" id = "html" th:attr = "theme = ${theme}">
+    <head>
+        <meta charset = "UTF-8">
+        <title th:text = "500"></title>
+        <link rel = "shortcut icon" type = "image/x-icon" th:href = "@{/img/ico/favicon.ico}" />
+        <link rel = "stylesheet" type = "text/css" th:href = "@{/css/assets/bootstrap.min.css}" />
+        <link rel = "stylesheet" type = "text/css" th:href = "@{/css/animations.css}" />
+        <link rel = "stylesheet" type = "text/css" th:href = "@{/css/colors.css}" />
+        <link rel = "stylesheet" type = "text/css" th:href = "@{/css/dimensions.css}" />
+        <link rel = "stylesheet" type = "text/css" th:href = "@{/css/fonts.css}" />
+        <link rel = "stylesheet" type = "text/css" th:href = "@{/css/layout.css}" />
+        <link rel = "stylesheet" type = "text/css" th:href = "@{/css/shadows.css}" />
+        <link rel = "stylesheet" type = "text/css" th:href = "@{/css/themes.css}" />
+        <script type = "text/javascript" th:src = "@{/js/assets/three.min.js}"></script>
+        <script type = "text/javascript" th:src = "@{/js/assets/vanta.min.js}"></script>
+        <script type = "text/javascript" th:src = "@{/js/background.js}"></script>
+        <script type = "text/javascript" th:src = "@{/js/globals.js}"></script>
+        <script type = "text/javascript" th:inline = "javascript"> globalsInitialization(); </script>
+    </head>
+    <body id = "background">
+        <script type = "text/javascript" th:inline = "javascript"> backgroundInitialization(); </script>
+        <div class = "container error">
+            <img class = "error-img" th:src = @{/img/error/500.gif} />
+            <div class = "error-div">
+                <div class = "code">500</div>
+                <div class="title">我们遇到了一些问题...</div>
+                <div class="explanation">
+                    <div>我们正在努力解决此问题。</div>
+                    <div>您可以暂时休息一下，享受户外阳光。</div>
+                </div>
+                <div class="advice">您可以在 <a href="https://github.com/AntonyLeons/Ward">Github</a> 上报告此问题</div>                
+            </div>
+        </div>
+    </body>
+</html>
