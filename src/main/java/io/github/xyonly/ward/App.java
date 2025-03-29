@@ -19,7 +19,7 @@ import java.util.Optional;
  * @author 倚栏听风
  * @date 2025-03-28
  */
-public class Ward {
+public class App {
 
     /**
      * 默认端口
@@ -43,7 +43,7 @@ public class Ward {
             argx.put("server.port", FileUtils.getValueFromIni("port"));
         }
 
-        Solon.start(Ward.class, argx, app -> {
+        Solon.start(App.class, argx, app -> {
             // 排除原有的 HTTP 插件，使用新的 HTTP 插件
             app.pluginExclude(SmHttpPlugin.class);
             app.pluginAdd(0, new SmHttpPluginNew());

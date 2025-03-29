@@ -1,7 +1,7 @@
 package io.github.xyonly.ward.controller;
 
 
-import io.github.xyonly.ward.Ward;
+import io.github.xyonly.ward.App;
 import io.github.xyonly.ward.service.ErrorService;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Get;
@@ -37,7 +37,7 @@ public class ErrorController {
     @Mapping
     public ModelAndView getError() throws IOException {
         ModelAndView modelAndView = new ModelAndView();
-        if (Ward.isFirstLaunch()) {
+        if (App.isFirstLaunch()) {
             return modelAndView.view("setup.html");
         }
         Map<String, Object> map = errorService.getError();

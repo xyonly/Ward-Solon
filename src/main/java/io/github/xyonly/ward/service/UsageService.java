@@ -1,6 +1,6 @@
 package io.github.xyonly.ward.service;
 
-import io.github.xyonly.ward.Ward;
+import io.github.xyonly.ward.App;
 import io.github.xyonly.ward.dao.UsageDto;
 import io.github.xyonly.ward.exception.ApplicationNotConfiguredException;
 import org.noear.solon.annotation.Component;
@@ -113,7 +113,7 @@ public class UsageService
      */
     public UsageDto getUsage() throws ApplicationNotConfiguredException
     {
-        if (!Ward.isFirstLaunch())
+        if (!App.isFirstLaunch())
         {
             UsageDto usageDto = new UsageDto();
 

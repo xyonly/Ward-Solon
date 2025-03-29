@@ -3,14 +3,13 @@ package io.github.xyonly.ward.service;
 
 import io.github.xyonly.ward.component.UtilitiesComponent;
 import io.github.xyonly.ward.exception.ApplicationNotConfiguredException;
+import org.noear.solon.Solon;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * IndexService displays index page of Ward application
@@ -45,20 +44,9 @@ public class IndexService {
      * Gets project version information
      *
      * @return MavenDto with filled field
-     * @throws IOException if file does not exists
      */
-    private String getVersion() throws IOException {
-        Properties properties = new Properties();
-        InputStream inputStream = getClass().getResourceAsStream("/META-INF/maven/io.github.xyonly/ward/pom.properties");
-
-        if (inputStream != null) {
-            properties.load(inputStream);
-            String version = properties.getProperty("version");
-
-            return "v" + version;
-        } else {
-            return "Developer mode";
-        }
+    private String getVersion() {
+        return Solon.cfg().get("ward.version", "Developer mode");
     }
 
 

@@ -1,6 +1,5 @@
 package io.github.xyonly.ward.component;
 
-import io.github.xyonly.ward.Ward;
 import io.github.xyonly.ward.common.Constants;
 import org.ini4j.Ini;
 import org.noear.solon.annotation.Component;

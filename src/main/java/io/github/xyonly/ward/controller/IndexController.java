@@ -1,7 +1,7 @@
 package io.github.xyonly.ward.controller;
 
 
-import io.github.xyonly.ward.Ward;
+import io.github.xyonly.ward.App;
 import io.github.xyonly.ward.exception.ApplicationNotConfiguredException;
 import io.github.xyonly.ward.service.IndexService;
 import io.github.xyonly.ward.util.FileUtils;
@@ -33,7 +33,7 @@ public class IndexController {
     @Mapping
     public ModelAndView getIndex(Context ctx) throws IOException, ApplicationNotConfiguredException {
         ModelAndView modelAndView = new ModelAndView();
-        if (Ward.isFirstLaunch()) {
+        if (App.isFirstLaunch()) {
             return modelAndView.view("setup.html");
         }
         if (ctx.session("ward.password") == null) {

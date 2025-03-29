@@ -1,7 +1,7 @@
 package io.github.xyonly.ward.service;
 
 
-import io.github.xyonly.ward.Ward;
+import io.github.xyonly.ward.App;
 import io.github.xyonly.ward.common.Constants;
 import io.github.xyonly.ward.dao.ResponseDto;
 import io.github.xyonly.ward.dao.SetupDto;
@@ -43,7 +43,7 @@ public class SetupService {
      * @throws IOException IoException if file is fot found, and cant be created
      */
     public ResponseDto postSetup(final SetupDto setupDto) throws IOException, ApplicationAlreadyConfiguredException {
-        if (Ward.isFirstLaunch()) {
+        if (App.isFirstLaunch()) {
             File file = new File(Constants.SETUP_FILE_PATH);
 
             if (file.createNewFile()) {
@@ -54,7 +54,7 @@ public class SetupService {
                 putInIniFile(file, "enableFog", setupDto.getEnableFog());
                 putInIniFile(file, "backgroundColor", setupDto.getBackgroundColor());
 
-                Ward.restart();
+                App.restart();
             } else {
                 throw new IOException();
             }
@@ -67,7 +67,7 @@ public class SetupService {
 
     @Deprecated
     public static ResponseDto envSetup() {
-        if (Ward.isFirstLaunch()) {
+        if (App.isFirstLaunch()) {
             try {
                 File file = new File(Constants.SETUP_FILE_PATH);
                 if (file.exists()) {
@@ -86,7 +86,7 @@ public class SetupService {
                     putInIniFile(file, "enableFog", enableFog);
                     putInIniFile(file, "backgroundColor", backgroundColor);
 
-                    Ward.restart();
+                    App.restart();
                 } else {
                     throw new IOException();
                 }

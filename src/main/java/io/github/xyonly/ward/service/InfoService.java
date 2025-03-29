@@ -1,7 +1,7 @@
 package io.github.xyonly.ward.service;
 
 
-import io.github.xyonly.ward.Ward;
+import io.github.xyonly.ward.App;
 import io.github.xyonly.ward.component.UtilitiesComponent;
 import io.github.xyonly.ward.dao.InfoDto;
 import io.github.xyonly.ward.dao.MachineDto;
@@ -186,7 +186,7 @@ public class InfoService
      */
     public InfoDto getInfo() throws ApplicationNotConfiguredException
     {
-        if (!Ward.isFirstLaunch())
+        if (!App.isFirstLaunch())
         {
             InfoDto infoDto = new InfoDto();
 
