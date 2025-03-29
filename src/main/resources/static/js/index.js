@@ -108,7 +108,6 @@ function sendInfoRequest() {
  */
 function sendUptimeRequest() {
     infoXHR.onreadystatechange = function () {
-        console.log(this)
         if ((this.readyState === 4) && (this.status === 200)) {
             const response = JSON.parse(this.response);
             const data = response.data;
