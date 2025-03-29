@@ -22,7 +22,7 @@ import java.util.Map;
 @Mapping(value = "/error")
 public class ErrorController {
     /**
-     * Autowired ErrorService object
+     * Inject ErrorService object
      * Used to determine error page
      */
     @Inject

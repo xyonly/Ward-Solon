@@ -3,14 +3,11 @@ package io.github.xyonly.ward.service;
 
 import io.github.xyonly.ward.Ward;
 import io.github.xyonly.ward.common.Constants;
-import io.github.xyonly.ward.component.UtilitiesComponent;
 import io.github.xyonly.ward.dao.ResponseDto;
 import io.github.xyonly.ward.dao.SetupDto;
 import io.github.xyonly.ward.exception.ApplicationAlreadyConfiguredException;
 import org.ini4j.Ini;
 import org.noear.solon.annotation.Component;
-import org.noear.solon.annotation.Inject;
-
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +20,6 @@ import java.io.IOException;
  */
 @Component
 public class SetupService {
-
 
 
     /**
@@ -48,10 +44,11 @@ public class SetupService {
      */
     public ResponseDto postSetup(final SetupDto setupDto) throws IOException, ApplicationAlreadyConfiguredException {
         if (Ward.isFirstLaunch()) {
-            File file = new File(Ward.SETUP_FILE_PATH);
+            File file = new File(Constants.SETUP_FILE_PATH);
 
             if (file.createNewFile()) {
                 putInIniFile(file, "serverName", setupDto.getServerName());
+                putInIniFile(file, "password", setupDto.getPassword());
                 putInIniFile(file, "theme", setupDto.getTheme());
                 putInIniFile(file, "port", setupDto.getPort());
                 putInIniFile(file, "enableFog", setupDto.getEnableFog());
@@ -68,10 +65,11 @@ public class SetupService {
         return new ResponseDto("Settings saved correctly");
     }
 
+    @Deprecated
     public static ResponseDto envSetup() {
         if (Ward.isFirstLaunch()) {
             try {
-                File file = new File(Ward.SETUP_FILE_PATH);
+                File file = new File(Constants.SETUP_FILE_PATH);
                 if (file.exists()) {
                     file.delete();
                 }

@@ -7,5 +7,10 @@ Ward 兼容所有主流操作系统，因为它使用了 [OSHI](https://github.c
 
 **已在以下系统测试：** `Windows` `Linux`  
 
+# 新增功能
+- 中文汉化
+- 密码登录
+
+
 # 快速开始
 其余操作请参考 [Ward](https://github.com/AntonyLeons/Ward)

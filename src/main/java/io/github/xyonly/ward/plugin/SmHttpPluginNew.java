@@ -42,7 +42,7 @@ public final class SmHttpPluginNew implements Plugin {
         ServerProps.init();
         MultipartUtil.init();
 
-        //todo: 这里是定制的重点，每次会重新实例化（旧的会缓存）
+
         HttpServerProps props = new HttpServerProps();
         final String _host = props.getHost();
         final int _port = props.getPort();

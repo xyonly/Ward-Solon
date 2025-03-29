@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f0f0f3, #d1d9e6);
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            background: #f0f0f3;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 8px 8px 15px #babecc, -8px -8px 15px #ffffff;
+            text-align: center;
+            width: 300px;
+        }
+        h2 {
+            color: #555;
+        }
+        .password-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            box-shadow: inset 5px 5px 10px #babecc, inset -5px -5px 10px #ffffff;
+            background: #f0f0f3;
+            outline: none;
+            text-align: center;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+            font-size: 18px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(145deg, #d1d9e6, #ffffff);
+            box-shadow: 5px 5px 10px #babecc, -5px -5px 10px #ffffff;
+            cursor: pointer;
+            font-size: 16px;
+            color: #555;
+        }
+        button:active {
+            box-shadow: inset 5px 5px 10px #babecc, inset -5px -5px 10px #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h2>登录</h2>
+    <form action="/login" method="post">
+        <div class="password-container">
+            <input type="password" id="password" name="password" placeholder="输入密码" required>
+            <span class="toggle-password" onclick="togglePassword()">🙄</span>
+        </div>
+        <button type="submit">登录</button>
+    </form>
+</div>
+<script>
+    function togglePassword() {
+        const passwordField = document.getElementById('password');
+        const toggleIcon = document.querySelector('.toggle-password');
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            toggleIcon.textContent = '😝';
+        } else {
+            passwordField.type = 'password';
+            toggleIcon.textContent = '🙄';
+        }
+    }
+</script>
+</body>
+</html>

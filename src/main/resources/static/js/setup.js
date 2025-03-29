@@ -3,8 +3,7 @@
 /**
  * Initializes dom objects
  */
-function setupInitialization()
-{
+function setupInitialization() {
     setAlertStyle("light");
 
     let lightTheme = document.getElementById("light-theme");
@@ -21,20 +20,28 @@ function setupInitialization()
 
     setupXHR = new XMLHttpRequest();
 
-    lightTheme.addEventListener("click", function(event) {changeTheme(event.target || event.srcElement)});
-    darkTheme.addEventListener("click", function(event) {changeTheme(event.target || event.srcElement)});
-    submit.addEventListener("click", function(event) {sendSetupRequest(event.target || event.srcElement)});
-    enableFog.addEventListener("change", function(event) {toggleFog()});
-    backgroundColor.addEventListener("input", function(event) {changeBackgroundColor()});
+    lightTheme.addEventListener("click", function (event) {
+        changeTheme(event.target || event.srcElement)
+    });
+    darkTheme.addEventListener("click", function (event) {
+        changeTheme(event.target || event.srcElement)
+    });
+    submit.addEventListener("click", function (event) {
+        sendSetupRequest(event.target || event.srcElement)
+    });
+    enableFog.addEventListener("change", function (event) {
+        toggleFog()
+    });
+    backgroundColor.addEventListener("input", function (event) {
+        changeBackgroundColor()
+    });
 }
 
 /**
  * Changes theme
  */
-function changeTheme(element)
-{
-    if (String(element.id) == "light-theme")
-    {
+function changeTheme(element) {
+    if (String(element.id) == "light-theme") {
         html.setAttribute("theme", "light");
         setAlertStyle("light");
 
@@ -48,9 +55,7 @@ function changeTheme(element)
             lowlightColor: 0xE4E3EF,
             baseColor: 0xE4E3EF
         });
-    }
-    else
-    {
+    } else {
         html.setAttribute("theme", "dark");
         setAlertStyle("dark");
 
@@ -78,14 +83,11 @@ function changeTheme(element)
  *
  * @param {*} style name
  */
-function setAlertStyle(styleName)
-{
+function setAlertStyle(styleName) {
     let links = document.getElementsByTagName("link");
 
-    for (let i = 0; i < links.length; i++)
-    {
-        if ((links[i].getAttribute("title") == "light") || (links[i].getAttribute("title") == "dark"))
-        {
+    for (let i = 0; i < links.length; i++) {
+        if ((links[i].getAttribute("title") == "light") || (links[i].getAttribute("title") == "dark")) {
             links[i].disabled = (links[i].getAttribute("title") != styleName);
         }
     }
@@ -94,8 +96,7 @@ function setAlertStyle(styleName)
 /**
  * Sends settings request
  */
-function sendSetupRequest()
-{
+function sendSetupRequest() {
     // Disable button with delay
     submit.disabled = true;
     submit.value = "LAUNCHING...";
@@ -104,22 +105,17 @@ function sendSetupRequest()
     setupXHR.open("POST", "/api/setup");
     setupXHR.setRequestHeader("Content-Type", "application/json");
 
-    setupXHR.onreadystatechange = function()
-    {
-        if (this.readyState === 4)
-        {
-            if (this.status === 200)
-            {
-                setTimeout(function() {
+    setupXHR.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            if (this.status === 200) {
+                setTimeout(function () {
                     window.location = `http://${window.location.hostname}:${port.value}`;
-                }, 2500);
-            }
-            else
-            {
+                }, 300);
+            } else {
                 submit.disabled = false;
                 submit.value = "LAUNCH";
                 submit.style.opacity = "1";
-                
+
                 const message = {
                     text: "Fill the form correctly",
                     type: ("")
@@ -133,6 +129,7 @@ function sendSetupRequest()
         serverName: serverName.value,
         theme: html.getAttribute("theme"),
         port: port.value,
+        password: document.getElementById("password").value,
         enableFog: String(enableFog.checked),
         backgroundColor: backgroundColor.value
     }
@@ -143,8 +140,7 @@ function sendSetupRequest()
 /**
  * Toggles fog
  */
-function toggleFog()
-{
+function toggleFog() {
     html.setAttribute("enableFog", String(enableFog.checked));
     backgroundInitialization();
     backgroundColor.disabled = enableFog.checked;
@@ -153,8 +149,7 @@ function toggleFog()
 /**
  * Change background color
  */
-function changeBackgroundColor()
-{
+function changeBackgroundColor() {
     html.setAttribute("backgroundColor", backgroundColor.value);
     document.body.style.backgroundColor = backgroundColor.value;
 }

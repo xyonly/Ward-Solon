@@ -214,7 +214,7 @@ body {
     top: var(--top-label-additional-settings);
     text-align: center;
     letter-spacing: var(--letter-spacing-2px);
-    font-size: var(--font-size-9pt);
+    font-size: var(--font-size-12pt);
     font-weight: var(--font-weight-regular);
     color: var(--color-label-additional-settings);
 }

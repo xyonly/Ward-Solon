@@ -19,7 +19,7 @@ import org.noear.solon.core.handle.Result;
 @Mapping(value = "/api/uptime")
 public class UptimeController {
     /**
-     * Autowired UptimeService object
+     * Inject UptimeService object
      * Used for getting uptime information
      */
     @Inject

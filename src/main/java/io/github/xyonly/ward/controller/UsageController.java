@@ -21,7 +21,7 @@ import org.noear.solon.core.handle.Result;
 @Mapping(value = "/api/usage")
 public class UsageController {
     /**
-     * Autowired UsageService object
+     * Inject UsageService object
      * Used for getting usage information
      */
     @Inject

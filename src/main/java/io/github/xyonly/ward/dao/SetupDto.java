@@ -27,6 +27,12 @@ public class SetupDto
     private String serverName;
 
     /**
+     * Password Field
+     */
+    @NotNull
+    @Size(min = 1, max = 10)
+    private String password;
+    /**
      * Theme name field
      */
     @NotNull

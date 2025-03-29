@@ -17,7 +17,7 @@ import java.util.Map;
 @Component
 public class ErrorService {
     /**
-     * Autowired UtilitiesComponent object
+     * Inject UtilitiesComponent object
      * Used for various utility functions
      */
     @Inject

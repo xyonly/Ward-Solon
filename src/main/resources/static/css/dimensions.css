@@ -210,7 +210,7 @@
 
     /* border-radius */
     --border-radius-setup-div: 1.25rem;
-    --border-radius-port: 0rem 0rem 0.625rem 0.625rem;
+    --border-radius-port: 0.625rem 0.625rem 0.625rem 0.625rem;
     --border-radius-card: 1.25rem;
     --border-radius-hw-logo: 50%;
     --border-radius-inner-dot: 50%;

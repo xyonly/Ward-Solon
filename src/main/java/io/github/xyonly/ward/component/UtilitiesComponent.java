@@ -1,11 +1,14 @@
 package io.github.xyonly.ward.component;
 
 import io.github.xyonly.ward.Ward;
+import io.github.xyonly.ward.common.Constants;
 import org.ini4j.Ini;
 import org.noear.solon.annotation.Component;
 
 import java.io.File;
 import java.io.IOException;
+
+import static io.github.xyonly.ward.common.Constants.SECTION_NAME;
 
 /**
  * @author 倚栏听风
@@ -13,10 +16,6 @@ import java.io.IOException;
  */
 @Component
 public class UtilitiesComponent {
-    /**
-     * Constant, that providing setup section name
-     */
-    private static final String SECTION_NAME = "setup";
 
     /**
      * Gets string data from ini file
@@ -27,7 +26,7 @@ public class UtilitiesComponent {
      */
     @SuppressWarnings(value = "MismatchedQueryAndUpdateOfCollection")
     public String getFromIniFile(final String optionName) throws IOException {
-        final File file = new File(Ward.SETUP_FILE_PATH);
+        final File file = new File(Constants.SETUP_FILE_PATH);
 
         if (file.exists()) {
             final Ini ini = new Ini(file);
@@ -45,7 +44,7 @@ public class UtilitiesComponent {
      * @throws IOException if file does not exist
      */
     public void putInIniFile(final String optionName, final String value) throws IOException {
-        final File file = new File(Ward.SETUP_FILE_PATH);
+        final File file = new File(Constants.SETUP_FILE_PATH);
 
         if (file.exists()) {
             final Ini ini = new Ini(file);

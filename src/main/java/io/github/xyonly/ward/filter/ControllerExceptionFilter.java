@@ -13,15 +13,13 @@ import org.smartboot.http.common.enums.HttpStatus;
 import org.smartboot.http.common.exception.HttpException;
 
 /**
- * ControllerExceptionHandler is standard exception handler for rest api, and white labels
- *
- * @author Rudolf Barbu
- * @version 1.0.0
+ * 全局异常处理
  */
+
 @Component
 public class ControllerExceptionFilter implements Filter {
     /**
-     * Autowired UtilitiesComponent object
+     * Inject UtilitiesComponent object
      * Used for various utility functions
      */
     @Inject
@@ -43,8 +41,9 @@ public class ControllerExceptionFilter implements Filter {
                 if (httpException.getHttpStatus() == HttpStatus.NOT_FOUND) {
                     modelAndView.view("error/404.html");
                 }
+            } else {
+                modelAndView.view("error/500.html");
             }
-            modelAndView.view("error/500.html");
             ctx.render(modelAndView);
         }
     }

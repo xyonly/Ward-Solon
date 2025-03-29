@@ -25,7 +25,7 @@ import java.util.Arrays;
 public class UsageService
 {
     /**
-     * Autowired SystemInfo object
+     * Inject SystemInfo object
      * Used for getting usage information
      */
     @Inject

@@ -1,18 +1,15 @@
 package io.github.xyonly.ward.service;
 
 
-import io.github.xyonly.ward.Ward;
 import io.github.xyonly.ward.component.UtilitiesComponent;
 import io.github.xyonly.ward.exception.ApplicationNotConfiguredException;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
-import org.noear.solon.core.handle.ModelAndView;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Properties;
 
 /**
@@ -22,24 +19,23 @@ import java.util.Properties;
  * @version 1.0.1
  */
 @Component
-public class IndexService
-{
+public class IndexService {
     /**
-     * Autowired InfoService object
+     * Inject InfoService object
      * Used for getting machine information for html template
      */
     @Inject
     private InfoService infoService;
 
     /**
-     * Autowired UptimeService object
+     * Inject UptimeService object
      * Used for getting uptime for html template
      */
     @Inject
     private UptimeService uptimeService;
 
     /**
-     * Autowired UtilitiesComponent object
+     * Inject UtilitiesComponent object
      * Used for various utility functions
      */
     @Inject
@@ -51,29 +47,24 @@ public class IndexService
      * @return MavenDto with filled field
      * @throws IOException if file does not exists
      */
-    private String getVersion() throws IOException
-    {
+    private String getVersion() throws IOException {
         Properties properties = new Properties();
         InputStream inputStream = getClass().getResourceAsStream("/META-INF/maven/io.github.xyonly/ward/pom.properties");
 
-        if (inputStream != null)
-        {
+        if (inputStream != null) {
             properties.load(inputStream);
             String version = properties.getProperty("version");
 
             return "v" + version;
-        }
-        else
-        {
+        } else {
             return "Developer mode";
         }
     }
 
 
-    public Map<String, Object> getIndex() throws IOException, ApplicationNotConfiguredException
-    {
+    public Map<String, Object> getIndex() throws IOException, ApplicationNotConfiguredException {
 
-        Map<String, Object>  map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         updateDefaultsInSetupFile();
         map.put("theme", utilitiesComponent.getFromIniFile("theme"));
         map.put("serverName", utilitiesComponent.getFromIniFile("serverName"));

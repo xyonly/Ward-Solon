@@ -6,6 +6,7 @@ import io.github.xyonly.ward.dao.SetupDto;
 import io.github.xyonly.ward.exception.ApplicationAlreadyConfiguredException;
 import io.github.xyonly.ward.service.SetupService;
 import org.noear.solon.annotation.*;
+import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Result;
 import org.noear.solon.validation.annotation.Valid;
 import org.noear.solon.validation.annotation.Validated;
@@ -23,7 +24,7 @@ import java.io.IOException;
 @Mapping(value = "/api/setup")
 public class SetupController {
     /**
-     * Autowired SetupService object
+     * Inject SetupService object
      * Used for posting settings information in ini file
      */
     @Inject
@@ -37,7 +38,9 @@ public class SetupController {
      */
     @Post
     @Mapping
-    public Result<ResponseDto> postSetup(@Body @Validated final SetupDto setupDto) throws IOException, ApplicationAlreadyConfiguredException {
-        return Result.succeed(setupService.postSetup(setupDto));
+    public Result<ResponseDto> postSetup(@Body @Validated final SetupDto setupDto, Context ctx) throws IOException, ApplicationAlreadyConfiguredException {
+        ResponseDto responseDto = setupService.postSetup(setupDto);
+        ctx.sessionSet("ward.password", setupDto.getPassword());
+        return Result.succeed(responseDto);
     }
 }
